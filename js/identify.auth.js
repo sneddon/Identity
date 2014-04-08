@@ -32,6 +32,7 @@ var checkAuth = function(authResult) {
 }
 
 function handleAuthResult(authResult) {
+  console.log("handleAuthResult - Begin");
   if (authResult) {
     // The user has authorized access
 
@@ -74,6 +75,7 @@ function handleUnAuthorized() {
 
 
 $("#authorize-button").on("click", function (e){
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
-  return false;
+  // gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+  gapi.auth.signIn(options);
+  // return false;
 });
