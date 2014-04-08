@@ -1,6 +1,16 @@
 //set scope
 var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
+var options = {
+  'callback' : checkAuth,
+  'approvalprompt' : 'force',
+  'clientid' : clientId,
+  'requestvisibleactions' : 'http://schemas.google.com/CommentActivity http://schemas.google.com/ReviewActivity',
+  'cookiepolicy' : 'single_host_origin'
+};
+
+
+
 // This function is called after the Client Library has finished loading
 function handleClientLoad() {
 
