@@ -32,8 +32,6 @@ function checkAuth (authResult) {
     console.log('Sign-in state: ' + authResult['error']);
   }
 
-  console.log("checkAuth - End");
-
 }
 
 function handleAuthResult(authResult) {
