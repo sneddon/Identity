@@ -76,5 +76,6 @@ function handleUnAuthorized() {
 
 $("#authorize-button").on("click", function (e){
   // gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+  gapi.auth.signIn(options);
   // return false;
 });
