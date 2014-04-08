@@ -19,7 +19,7 @@ function handleClientLoad() {
   gapi.auth.signIn(options);
 
   // 2. Call the function that checks if the user is Authenticated. This is defined in the next section
-  window.setTimeout(checkAuth,1);
+  // window.setTimeout(checkAuth,1);
 }
 
 var checkAuth = function(authResult) {
