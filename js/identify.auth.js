@@ -1,12 +1,14 @@
 //set scope
 var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
+// note the scope includes the plus.me which is openID Connect
 var options = {
   'callback' : checkAuth,
   'approvalprompt' : 'force',
   'clientid' : clientId,
   'requestvisibleactions' : 'http://schemas.google.com/CommentActivity http://schemas.google.com/ReviewActivity',
-  'cookiepolicy' : 'single_host_origin'
+  'cookiepolicy' : 'single_host_origin',
+  'scope' : 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.me'
 };
 
 
@@ -78,7 +80,6 @@ function handleUnAuthorized() {
 
 
 $("#authorize-button").on("click", function (e){
-  // gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
   gapi.auth.signIn(options);
-  // return false;
+  return false;
 });
