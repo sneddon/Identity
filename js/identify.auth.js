@@ -15,7 +15,6 @@ var options = {
 function handleClientLoad() {
 
   console.log("handleClientLoad - Begin");
-  console.log("options = " + options );
   // 1. Set the API Key
   // gapi.client.setApiKey(apiKey);
   gapi.auth.signIn(options);
