@@ -32,6 +32,7 @@ var checkAuth = function(authResult) {
 }
 
 function handleAuthResult(authResult) {
+  console.log("handleAuthResult - Begin");
   if (authResult) {
     // The user has authorized access
 
