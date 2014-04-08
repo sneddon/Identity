@@ -22,14 +22,14 @@ function handleClientLoad() {
   // window.setTimeout(checkAuth,1);
 }
 
-var checkAuth = function(authResult) {
+function checkAuth (authResult) {
   // Call the Google Accounts Service to determine the current user's auth status.
   // Pass the response to the handleAuthResult callback function
   if (authResult) {
     console.log(authResult['status']['google_logged_in']);
   }
   else {
-    console.log("no authResult!");
+    console.log('Sign-in state: ' + authResult['error']);
   }
 
   console.log("checkAuth - End");
