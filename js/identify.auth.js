@@ -3,7 +3,7 @@ var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
 // note the scope includes the plus.me which is openID Connect
 var options = {
-  'callback' : checkAuth,
+  'callback' : handleAuthResult,
   'approvalprompt' : 'force',
   'clientid' : clientId,
   'requestvisibleactions' : 'http://schemas.google.com/CommentActivity http://schemas.google.com/ReviewActivity',
@@ -22,6 +22,7 @@ function handleClientLoad() {
   // window.setTimeout(checkAuth,1);
 }
 
+/*
 function checkAuth (authResult) {
   // Call the Google Accounts Service to determine the current user's auth status.
   // Pass the response to the handleAuthResult callback function
@@ -33,21 +34,39 @@ function checkAuth (authResult) {
   }
 
 }
+*/
+function handleAuthResult(authResult) {
+  console.log("handleAuthResult - Begin");
+  if (authResult['status']['signed_in']) {
+    // Update the app to reflect a signed in user
+    handleAuthorized();
+  } else {
+    // Update the app to reflect a signed out user
+    // Possible error values:
+    //   "user_signed_out" - User is signed-out
+    //   "access_denied" - User denied access to your app
+    //   "immediate_failed" - Could not automatically log in the user
+    console.log('Sign-in state: ' + authResult['error']);
+    handleUnAuthorized();
+  }
+}
 
+/*
 function handleAuthResult(authResult) {
   console.log("handleAuthResult - Begin");
   if (authResult) {
     // The user has authorized access
-
     console.log(authResult.status);
-
+    console.log(authResult['status']['google_logged_in']);
     handleAuthorized();
 
   } else {
     // User has not Authenticated and Authorized
+    console.log("handleAuthResult - Begin");
     handleUnAuthorized();
   }
 }
+*/
 
 // Authorized user
 function handleAuthorized() {
