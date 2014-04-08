@@ -17,27 +17,14 @@ var options = {
 function handleClientLoad() {
   // 1. SignIn with the options
   gapi.auth.signIn(options);
-
-  // 2. Call the function that checks if the user is Authenticated. This is defined in the next section
-  // window.setTimeout(checkAuth,1);
 }
 
-/*
-function checkAuth (authResult) {
-  // Call the Google Accounts Service to determine the current user's auth status.
-  // Pass the response to the handleAuthResult callback function
-  if (authResult) {
-    console.log(authResult['status']['google_logged_in']);
-  }
-  else {
-    console.log('Sign-in state: ' + authResult['error']);
-  }
 
-}
-*/
 function handleAuthResult(authResult) {
   console.log("handleAuthResult - Begin");
   if (authResult['status']['signed_in']) {
+    console.log(authResult.status);
+    console.log(authResult['status']['google_logged_in']);
     // Update the app to reflect a signed in user
     handleAuthorized();
   } else {
@@ -50,23 +37,6 @@ function handleAuthResult(authResult) {
     handleUnAuthorized();
   }
 }
-
-/*
-function handleAuthResult(authResult) {
-  console.log("handleAuthResult - Begin");
-  if (authResult) {
-    // The user has authorized access
-    console.log(authResult.status);
-    console.log(authResult['status']['google_logged_in']);
-    handleAuthorized();
-
-  } else {
-    // User has not Authenticated and Authorized
-    console.log("handleAuthResult - Begin");
-    handleUnAuthorized();
-  }
-}
-*/
 
 // Authorized user
 function handleAuthorized() {
