@@ -32,6 +32,7 @@ var checkAuth = function(authResult) {
 }
 
 function handleAuthResult(authResult) {
+  console.log("handleAuthResult - Begin");
   if (authResult) {
     // The user has authorized access
 
@@ -47,7 +48,7 @@ function handleAuthResult(authResult) {
 
 // Authorized user
 function handleAuthorized() {
-    console.log("handleAuthorized");
+    console.log("handleAuthorized - Begin");
 
     // display happy chuck
     $('#chuckHappy').show();
@@ -60,7 +61,7 @@ function handleAuthorized() {
 
 // Unauthorized user
 function handleUnAuthorized() {
-    console.log("handleUnAuthorized");
+    console.log("handleUnAuthorized - Begin");
 
     // display happy chuck
     $('#chuckHappy').hide();
@@ -74,6 +75,8 @@ function handleUnAuthorized() {
 
 
 $("#authorize-button").on("click", function (e){
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+  //gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+  console.log("authorize-button - begin")
+  gapi.auth.signIn(options);
   return false;
 });
